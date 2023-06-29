@@ -37,7 +37,7 @@ public class HelloController {
         if (name == null){
             name = "world";
         } // removes the word null
-        return  "<h1>Hello " + name + "!</h1>";
+        return getHelloString(name);
 
         /*@RequestParam String personName Adds query parameters that gives it s string
          url has to have /hello?name=bob, the bob can be changed to anything, this is to show on the web browser
@@ -55,10 +55,20 @@ public class HelloController {
         if (personName == null){
             personName = "world";
         }
-        return  "<h1>Hello " + personName + "!</h1>";
+        return getHelloString(personName);
     }
 
     private String getHelloString (String peronName){
-        return "<h1>Hello" + peronName + "!</h1>";
+        return "<h1>Hello " + peronName + "!</h1>";
+
+        /*
+        return  "<h1>Hello " + personName + "!</h1>";
+        return  "<h1>Hello " + name + "!</h1>";
+
+        This prevents the code from getting complex, instead of  returing the <1> elements
+        you will call the last method and it will make it simpler
+         */
+
+
     }
 }
