@@ -24,11 +24,6 @@ public class HelloController {
     POST /ads/create  show page to add an ad
     PUT /ads/1 crete update an existing ad with id 1
     DELETE /ads/1 delete existing ad with id 1
-
-
-
-
-
      */
     //First one
 
