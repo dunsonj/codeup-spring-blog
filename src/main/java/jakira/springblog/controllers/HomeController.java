@@ -13,7 +13,7 @@ public class HomeController {
 
     @GetMapping()
     @ResponseBody
-    public String home(@RequestParam @Nullable String quote){
+    public String home(){
         return "<p>This is the landing page!</p>";
     }
 
