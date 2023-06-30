@@ -2,10 +2,11 @@ package jakira.springblog.controllers;
 
 import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller //tells the machine that this class is a controller. Needs to be hocked up and loaded.
-@RequestMapping(path = "/hello")// this is telling the class they are alll going to start w /hello, if the url has something diff it will show on the get mapping of the methods
+//@RequestMapping(path = "/hello")// this is telling the class they are alll going to start w /hello, if the url has something diff it will show on the get mapping of the methods
 public class HelloController {
     /*
     Type in application /hello
@@ -29,46 +30,52 @@ public class HelloController {
 
     //One controller can control multiple end points, the name should infer what the controller infers
 
-    //Request get request
-    @GetMapping() //to trigger the method underneath. The url. If sees ur as a get request it will show the body on the browser.
-    @ResponseBody  //we need to tell spring the body is the body of HTML browser
+//    //Request get request
+//    @GetMapping() //to trigger the method underneath. The url. If sees ur as a get request it will show the body on the browser.
+//    @ResponseBody  //we need to tell spring the body is the body of HTML browser
+////
+//    public String sayHello(@RequestParam @Nullable String name){
+//        if (name == null){
+//            name = "world";
+//        } // removes the word null
+//        return getHelloString(name);
+//
+//        /*@RequestParam String personName Adds query parameters that gives it s string
+//         url has to have /hello?name=bob, the bob can be changed to anything, this is to show on the web browser
+//        @Nullable allows parameter to be called without a name
+//         */
+//
+//        /*
+//        Send over a path variable
+//         */
+//    }
+////
+//    @GetMapping("/{personName}")
+//    @ResponseBody
+//    public String sayHelloToName(@PathVariable String personName){
+//        if (personName == null){
+//            personName = "world";
+//        }
+//        return getHelloString(personName);
+//    }
+//
+//    private String getHelloString (String peronName){
+//        return "<h1>Hello " + peronName + "!</h1>";
+//
+//        /*
+//        return  "<h1>Hello " + personName + "!</h1>";
+//        return  "<h1>Hello " + name + "!</h1>";
+//
+//        This prevents the code from getting complex, instead of  returing the <1> elements
+//        you will call the last method and it will make it simpler
+//         */
+//
+//
+//    }
+@GetMapping("/hello/{name}")
+public String sayHello(@PathVariable String name, Model model) {
+    model.addAttribute("name", name);
+    return "hello";
+}
 
-    public String sayHello(@RequestParam @Nullable String name){
-        if (name == null){
-            name = "world";
-        } // removes the word null
-        return getHelloString(name);
-
-        /*@RequestParam String personName Adds query parameters that gives it s string
-         url has to have /hello?name=bob, the bob can be changed to anything, this is to show on the web browser
-        @Nullable allows parameter to be called without a name
-         */
-
-        /*
-        Send over a path variable
-         */
-    }
-
-    @GetMapping("/{personName}")
-    @ResponseBody
-    public String sayHelloToName(@PathVariable String personName){
-        if (personName == null){
-            personName = "world";
-        }
-        return getHelloString(personName);
-    }
-
-    private String getHelloString (String peronName){
-        return "<h1>Hello " + peronName + "!</h1>";
-
-        /*
-        return  "<h1>Hello " + personName + "!</h1>";
-        return  "<h1>Hello " + name + "!</h1>";
-
-        This prevents the code from getting complex, instead of  returing the <1> elements
-        you will call the last method and it will make it simpler
-         */
-
-
-    }
 }
