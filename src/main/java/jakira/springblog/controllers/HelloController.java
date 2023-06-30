@@ -26,14 +26,15 @@ public class HelloController {
     PUT /ads/1 crete update an existing ad with id 1
     DELETE /ads/1 delete existing ad with id 1
      */
-    //First one
-
-    //One controller can control multiple end points, the name should infer what the controller infers
-
+//
+//    First one
+//
+//    One controller can control multiple end points, the name should infer what the controller infers
+//
 //    //Request get request
 //    @GetMapping() //to trigger the method underneath. The url. If sees ur as a get request it will show the body on the browser.
 //    @ResponseBody  //we need to tell spring the body is the body of HTML browser
-////
+//
 //    public String sayHello(@RequestParam @Nullable String name){
 //        if (name == null){
 //            name = "world";
@@ -48,8 +49,9 @@ public class HelloController {
 //        /*
 //        Send over a path variable
 //         */
+//
 //    }
-////
+//
 //    @GetMapping("/{personName}")
 //    @ResponseBody
 //    public String sayHelloToName(@PathVariable String personName){
@@ -69,9 +71,9 @@ public class HelloController {
 //        This prevents the code from getting complex, instead of  returing the <1> elements
 //        you will call the last method and it will make it simpler
 //         */
-//
-//
 //    }
+//
+
 @GetMapping("/hello/{name}")
 public String sayHello(@PathVariable String name, Model model) {
     model.addAttribute("name", name);
