@@ -7,15 +7,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
+
+//@Controller
+//@RequestMapping("/getMapping")
+//public class HomeController {
+
+// Controller exercise
+//    @GetMapping()
+//    @ResponseBody
+//    public String home(){
+//        return "<p>This is the landing page!</p>";
+//    }
+//
+//
+//}
+
+
+
 @Controller
-@RequestMapping("/getMapping")
 public class HomeController {
 
-    @GetMapping()
-    @ResponseBody
-    public String home(){
-        return "<p>This is the landing page!</p>";
+    @GetMapping("/home")
+    public String welcome() {
+        return "home";
     }
-
-
 }
