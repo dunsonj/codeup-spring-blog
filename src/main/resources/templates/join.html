@@ -13,5 +13,12 @@
   <button>Join now</button>
 </form>
 
+<div th:each="item : ${shoppingCart}">
+  <p th:text="${item.name}" />
+</div>
+
+<div class="alert alert-danger" th:if="${shoppingCart.size() > 2}">
+  This cart has more than two items.
+</div>
 </body>
 </html>

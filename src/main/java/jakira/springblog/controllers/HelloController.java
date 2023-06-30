@@ -1,9 +1,13 @@
 package jakira.springblog.controllers;
 
 import jakarta.annotation.Nullable;
+import jakira.springblog.controllers.models.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller //tells the machine that this class is a controller. Needs to be hocked up and loaded.
 //@RequestMapping(path = "/hello")// this is telling the class they are alll going to start w /hello, if the url has something diff it will show on the get mapping of the methods
@@ -81,11 +85,12 @@ public String sayHello(@PathVariable String name, Model model) {
 }
 
     @GetMapping("/join")
-    public String showJoinForm() {
-
-
-
-
+    public String showJoinForm(Model model) {
+        List<Item> shoppingCart = new ArrayList<>();
+        shoppingCart.add(new Item("screwdriver"));
+        shoppingCart.add(new Item("hammer"));
+//        shoppingCart.add(new Item("drill"));
+        model.addAttribute("shoppingCart", shoppingCart);
         return "join";
     }
 
