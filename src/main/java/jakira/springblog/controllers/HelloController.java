@@ -82,6 +82,10 @@ public String sayHello(@PathVariable String name, Model model) {
 
     @GetMapping("/join")
     public String showJoinForm() {
+
+
+
+
         return "join";
     }
 
