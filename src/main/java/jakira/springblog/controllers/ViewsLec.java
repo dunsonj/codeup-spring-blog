@@ -41,22 +41,8 @@ The quotation os what it will look on our page and the variable is the variable 
     Array list need to be created to have numerous of items to show
     That array list has to be attached to the view
 
-
-
-
-
-
-
-
-
-
-
-    Thymeleaf Utilites:
-
-
-
     Partials:
-
+This is to include templates
 
 
 
