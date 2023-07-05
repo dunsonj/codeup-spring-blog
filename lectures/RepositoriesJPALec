@@ -36,6 +36,11 @@ Annotation needs a primary key
     extends abstract class
     This wil do all the cred stuff
     A controller is needed
+    And a repository is needed, then a constructor is needed,spring will make the repository object and injection it in the controller
+    ex
+      private PostRepository postDao;
+
+      Post repository object that spring will use and it is done through repository
 
 
     }
