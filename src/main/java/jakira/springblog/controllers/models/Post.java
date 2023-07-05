@@ -1,6 +1,32 @@
 package jakira.springblog.controllers.models;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+
+@Entity
+@Table(name = "Children")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "Child_Name", length = 100, nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private int age;
+
+    @Column(length = 255)
+    private String parents;
+
+
     private String title;
     private String body;
 
@@ -20,4 +46,6 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
+
+
 }
