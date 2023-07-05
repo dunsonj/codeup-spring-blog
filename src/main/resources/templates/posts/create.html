@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create a Post</title>
 </head>
 <body>
+<form method="post" action="/dogs/create">
+    <label for="id">Id</label>
+    <input type="text" name="id" id="id">
+
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title">
+
+    <label for="body">Body</label>
+    <input type="text" name="body" id="body">
+
+    <button type="submit">Save Post</button>
+</form>
 
 </body>
 </html>
