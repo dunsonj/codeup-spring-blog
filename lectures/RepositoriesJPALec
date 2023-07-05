@@ -1,1 +1,51 @@
 Program about dogs, knowing there will be a dog table.
+
+@Entity annotation is used to tell the code it has a table
+Annotation needs a primary key
+
+@Id is one of the id annotations. (jackart aiport is best for the spring framework)
+
+
+@Entity
+@Table(name= "dogs") this is telling the system what the name of the table sohuld be
+    public class Dog{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column()
+        (to have a field in the table to have its own column, the blank parentesis will give the
+         default data type, with an initial size, will allow null)
+    @Column(name = "name", length = 1000, nullable = false)
+       (The data base should be named name, should not be nullabe, and have a varchar with the length of 100.
+        Column attributes can be changed but the name of table or columns will just create another one)
+    private String name;
+    @Column(nullable= false)
+    private int age;
+    (column filed that is named age, it is called age and you cannot have it nullable.)
+    @Column(name = "name", length = 1000, nullable = false, unique= true)
+    (this will allow names to be unique, not really necessary )
+
+
+    -----------------------------------------------------------------------------
+
+    public interface AdRepository extends JpaRepository<Ad, Long> {
+
+
+    this will give an ad DAO with all the methods and repository needed
+    extends abstract class
+    This wil do all the cred stuff
+    A controller is needed
+
+
+    }
+
+
+
+
+
+
+    }
+
+With the code on top a table will be created w lower case numbers with a big int, it will auto increment =
+It will create new columns in the field
