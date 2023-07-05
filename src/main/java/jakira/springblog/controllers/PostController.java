@@ -1,6 +1,6 @@
 package jakira.springblog.controllers;
 
-import jakira.springblog.controllers.models.Post;
+import jakira.springblog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

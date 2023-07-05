@@ -1,4 +1,4 @@
-package jakira.springblog.controllers.models;
+package jakira.springblog.models;
 
 
 import lombok.AllArgsConstructor;

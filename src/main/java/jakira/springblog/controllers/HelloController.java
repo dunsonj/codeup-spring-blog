@@ -1,7 +1,6 @@
 package jakira.springblog.controllers;
 
-import jakarta.annotation.Nullable;
-import jakira.springblog.controllers.models.Item;
+import jakira.springblog.models.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
