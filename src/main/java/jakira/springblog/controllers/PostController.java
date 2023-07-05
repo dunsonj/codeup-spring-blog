@@ -21,7 +21,7 @@ public class PostController {
     public String posts(Model model) {
         List<Post> posts = new ArrayList<>();
         posts.add(new Post("Hello", "Hello World"));
-        posts.add(new Post("Hello Part 2", "Hello World Again :)"));
+        posts.add(new Post("Hello Queen", "Hello Beautiful :)"));
         model.addAttribute("posts", posts);
         return "/posts/show";
     }
