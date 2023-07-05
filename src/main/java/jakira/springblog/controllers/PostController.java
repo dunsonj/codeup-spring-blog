@@ -45,17 +45,16 @@ public class PostController {
     }
     @PostMapping("/create")
     @ResponseBody
-    public String create(RequestParam Long id
+    public String create(@RequestParam Long id
                         , @RequestParam String title
                         , @RequestParam String body) {
-        System.out.println("%d %s %d %s\n", id, title, body);
+        System.out.printf("%d %s %d %s\n", id, title, body);
         Post post = new Post(id, title, body);
 
         postDao.save(post);
 
         return "Post created";
     }
-
     @GetMapping("/{id}/delete")
     @ResponseBody
     public String delete(@PathVariable Long id){
