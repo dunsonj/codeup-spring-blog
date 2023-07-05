@@ -15,7 +15,7 @@ import lombok.*;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "title", length = 100, nullable = false)
     private String title;
     @Column(name = "body", length = 100, nullable = false)

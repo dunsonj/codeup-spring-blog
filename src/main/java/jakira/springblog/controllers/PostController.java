@@ -2,33 +2,66 @@ package jakira.springblog.controllers;
 
 import jakira.springblog.models.Post;
 import jakira.springblog.repositories.PostRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import lombok.*;
+import java.util.Optional;
 
+import org.springframework.web.bind.annotation.GetMapping;
 
 @AllArgsConstructor
 
 @Controller
+@RequestMapping("/post")
 public class PostController {
     private PostRepository postDao;
-    @GetMapping("/post")
-    public String post(Model model) {
-        model.addAttribute("post", new Post(1L,"Hello", "Hello World"));
-        return "/posts/index";
+    @GetMapping
+    @ResponseBody
+    public String index() {
+        List<Post> post = postDao.findAll();
+
+        System.out.println(post);
+       List<Post> sPost = postDao.searchByTitle("a");
+        System.out.println(sPost);
+
+        return "show all posts here";
+    }
+    @GetMapping("/{id}")
+    @ResponseBody
+    public String fetchById(@PathVariable Long id){
+        Optional<Post> optionalPost = postDao.findById(id);
+
+        if(optionalPost.isEmpty()){
+            return "No post found, return a 404 instead";
+        }
+        Post post = optionalPost.get();
+        return post.toString();
+    }
+    @GetMapping("/create")
+    public String create(){
+        return "post/create";
+    }
+    @PostMapping("/create")
+    @ResponseBody
+    public String create(RequestParam Long id
+                        , @RequestParam String title
+                        , @RequestParam String body) {
+        System.out.println("%d %s %d %s\n", id, title, body);
+        Post post = new Post(id, title, body);
+
+        postDao.save(post);
+
+        return "Post created";
     }
 
-    @GetMapping("/posts")
-    public String posts(Model model) {
-        List<Post> posts = new ArrayList<>();
-        posts.add(new Post(2L,"Hello", "Hello World"));
-        posts.add(new Post(3L, "Hello Queen", "Hello Beautiful :)"));
-        model.addAttribute("posts", posts);
-        return "/posts/show";
+    @GetMapping("/{id}/delete")
+    @ResponseBody
+    public String delete(@PathVariable Long id){
+        postDao.deleteById(id);
+        return "post" + id + " deleted";
     }
+
 }
 
