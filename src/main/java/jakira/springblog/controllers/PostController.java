@@ -40,12 +40,12 @@ public class PostController {
         return post.toString();
     }
     @GetMapping("/posts/create")
-    public String create(){
+    public String showCreate(){
         return "/posts/create";
     }
-    @PostMapping("/create")
+    @PostMapping("/posts/create")
     @ResponseBody
-    public String create(@RequestParam Long id
+    public String doCcreate(@RequestParam Long id
                         , @RequestParam String title
                         , @RequestParam String body) {
         System.out.printf("%d %s %d %s\n", id, title, body);
