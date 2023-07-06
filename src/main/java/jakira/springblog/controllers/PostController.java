@@ -53,7 +53,7 @@ public class PostController {
 
         postDao.save(post);
 
-        return "Post created";
+        return "redirect:/posts";
     }
     @GetMapping("/{id}/delete")
     @ResponseBody
