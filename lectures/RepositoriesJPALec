@@ -42,8 +42,14 @@ Annotation needs a primary key
 
       Post repository object that spring will use and it is done through repository
 
+public interface PostRepository extends JpaRepository<Post, Long>
 
+the class name of the parameter and the data type of the parameter that is what is inside the angle brackets
     }
+ private PostRepository postDao;
+ This will read and write data to the repository
+ Can be declared final because it will only be used once
+ Spring will create the repository, kombok will take care of it cause spring wil take care of it
 
 
 

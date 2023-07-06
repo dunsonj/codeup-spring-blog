@@ -39,9 +39,9 @@ public class PostController {
         Post post = optionalPost.get();
         return post.toString();
     }
-    @GetMapping("/create")
+    @GetMapping("/posts/create")
     public String create(){
-        return "post/create";
+        return "/posts/create";
     }
     @PostMapping("/create")
     @ResponseBody
