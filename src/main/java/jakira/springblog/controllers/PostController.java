@@ -41,6 +41,7 @@ public class PostController {
     }
     @GetMapping("/posts/create")
     public String showCreate(){
+
         return "/posts/create";
     }
     @PostMapping("/posts/create")

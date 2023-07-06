@@ -49,8 +49,13 @@ the class name of the parameter and the data type of the parameter that is what 
  private PostRepository postDao;
  This will read and write data to the repository
  Can be declared final because it will only be used once
- Spring will create the repository, kombok will take care of it cause spring wil take care of it
+ Spring will create the repository, lombok will take care of it cause spring wil take care of it
 
+
+ Optional<Post> optionalPost = postDao.findById(id);
+
+ This is to make you check your code
+ if statement is required
 
 
 
