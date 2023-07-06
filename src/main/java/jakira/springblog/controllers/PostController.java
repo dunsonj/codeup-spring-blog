@@ -45,11 +45,13 @@ public class PostController {
     }
     @PostMapping("/posts/create")
     @ResponseBody
-    public String doCreate(@RequestParam Long id
-                        , @RequestParam String title
+    public String doCreate( @RequestParam String title
                         , @RequestParam String body) {
-        System.out.printf("%d %s %d %s\n", id, title, body);
-        Post post = new Post(id, title, body);
+        System.out.printf("%s %s\n", title, body);
+        Post post = new Post();
+
+        post.setTitle(title);
+        post.setBody(body);
 
         postDao.save(post);
 
