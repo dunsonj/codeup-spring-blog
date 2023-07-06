@@ -3,7 +3,6 @@ package jakira.springblog.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
