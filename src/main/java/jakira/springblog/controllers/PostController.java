@@ -61,6 +61,5 @@ public class PostController {
         postDao.deleteById(id);
         return "post" + id + " deleted";
     }
-
 }
 
