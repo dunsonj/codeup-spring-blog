@@ -45,7 +45,7 @@ public class PostController {
     }
     @PostMapping("/posts/create")
     @ResponseBody
-    public String doCcreate(@RequestParam Long id
+    public String doCreate(@RequestParam Long id
                         , @RequestParam String title
                         , @RequestParam String body) {
         System.out.printf("%d %s %d %s\n", id, title, body);
