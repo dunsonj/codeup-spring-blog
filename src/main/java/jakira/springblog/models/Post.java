@@ -15,8 +15,13 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "title", length = 100, nullable = false)
+    @Column(nullable = false)
     private String title;
-    @Column(name = "body", length = 1024, nullable = false)
+
+    @Column(length = 1024, nullable = false)
     private String body;
+
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
 }
