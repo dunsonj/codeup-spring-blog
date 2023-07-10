@@ -1,29 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/header :: head(pageTitle ='create')">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Create AD</title>
+    <title>Add a Blog Post!</title>
 </head>
 <body>
-<nav th:replace="/partials/navbar :: navbar"/>
-<div class="container-fluid card w-75">
-    <h1 class="card-title">Create Post</h1>
+<h3>Add a blog post!</h3>
 
-    <form th:method="POST" th:action="@{'/ads/create'}" th:object="${ad}">
-        <div class="mb-2">
-            <h3>Title</h3>
-            <input class="w-100" type="text" th:field="*{title}" id="title">
-        </div>
-        <div class="">
-            <div>
-                <h3>Body</h3>
-                <textarea class="w-100" th:field="*{description}" id="body"></textarea>
-            </div>
-        </div>
-        <div class="text-right m-4">
-            <button class="btn btn-primary">Create Post</button>
-        </div>
-    </form>
-</div>
+<form method="post" action="/posts/create">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" placeholder="Enter a title">
+
+    <label for="body">Body</label>
+    <textarea id="body" name="body" placeholder="Enter a blog post body"></textarea>
+
+    <button type="submit">Save it!</button>
+</form>
+
 </body>
 </html>
