@@ -1,5 +1,6 @@
 package jakira.springblog.controllers;
 
+import jakira.springblog.models.EmailService;
 import jakira.springblog.models.Post;
 import jakira.springblog.models.User;
 import jakira.springblog.repositories.PostRepository;
@@ -21,12 +22,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PostController {
     private PostRepository postDao;
     private UserRepository userDao;
+
+    private EmailService emailService;
     @GetMapping("")
-    @ResponseBody
     public String posts (Model model){
         List<Post> posts = postDao.findAll();
 
-        model.addAttribute("postw", posts);
+        model.addAttribute("posts", posts);
         return "/posts/index";
     }
     @GetMapping("/{id}")
@@ -54,8 +56,10 @@ public class PostController {
         post.setTitle(title);
         post.setBody(body);
 
-        User loggedInUser = userDao.findById(2L).get();
+        User loggedInUser = userDao.findById(1L).get();
         post.setCreator(loggedInUser);
+
+        emailService.prepareAndSend(post, title, body);
 
         postDao.save(post);
 
