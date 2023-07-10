@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @AllArgsConstructor
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
     private PostRepository postDao;
     @GetMapping
