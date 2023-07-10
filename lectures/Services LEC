@@ -1,0 +1,5 @@
+private EmailService emailService;
+    bringing the email services to the controller
+
+    inject email service between the creation of saving the creation of the item
+    emailServices.prepareAndSend(): goes in between
