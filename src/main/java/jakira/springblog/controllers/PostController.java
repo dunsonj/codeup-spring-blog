@@ -17,52 +17,47 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/posts")
 public class PostController {
     private PostRepository postDao;
-    @GetMapping
+    private UserReposirty userDao;
+    @GetMapping("")
     @ResponseBody
-    public String index() {
-        List<Post> post = postDao.findAll();
+    public String posts (Model model){
+        List<Post> posts = postDao.findAll();
 
-        System.out.println(post);
-       List<Post> sPost = postDao.searchByTitle("a");
-        System.out.println(sPost);
-
-        return "show all posts here";
+        model.addAttribute("postw", posts);
+        return "/posts/index";
     }
     @GetMapping("/{id}")
-    @ResponseBody
-    public String fetchById(@PathVariable Long id){
+
+    public String showSinglePost(@PathVariable Long id, Model model){
         Optional<Post> optionalPost = postDao.findById(id);
 
         if(optionalPost.isEmpty()){
-            return "No post found, return a 404 instead";
+            System.out.printf("Post with id " + id + " not found!");
+            return "home";
         }
-        Post post = optionalPost.get();
-        return post.toString();
+        model.addAttribute("post", optionalPost.get());
+        return "/posts/show";
     }
-    @GetMapping("/posts/create")
+    @GetMapping("/create")
     public String showCreate(){
 
         return "/posts/create";
     }
-    @PostMapping("/posts/create")
-    @ResponseBody
+    @PostMapping("/create")
     public String doCreate( @RequestParam String title
                         , @RequestParam String body) {
-        System.out.printf("%s %s\n", title, body);
         Post post = new Post();
 
         post.setTitle(title);
         post.setBody(body);
 
+        User loggedInUser = userDao.findById(2L).get();
+        post.setCreator(loggedInUser);
+
         postDao.save(post);
 
         return "redirect:/posts";
-    }
-    @GetMapping("/{id}/delete")
-    @ResponseBody
-    public String delete(@PathVariable Long id){
-        postDao.deleteById(id);
-        return "post" + id + " deleted";
+
     }
 }
 
