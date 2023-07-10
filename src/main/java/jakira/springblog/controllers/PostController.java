@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/posts")
 public class PostController {
     private PostRepository postDao;
-    private UserReposirty userDao;
+    private UserRepository userDao;
     @GetMapping("")
     @ResponseBody
     public String posts (Model model){
