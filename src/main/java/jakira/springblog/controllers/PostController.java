@@ -1,9 +1,12 @@
 package jakira.springblog.controllers;
 
 import jakira.springblog.models.Post;
+import jakira.springblog.models.User;
 import jakira.springblog.repositories.PostRepository;
+import jakira.springblog.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

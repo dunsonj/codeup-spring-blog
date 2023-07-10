@@ -1,13 +1,13 @@
 package jakira.springblog.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,10 +18,10 @@ import lombok.Setter;
 @Table(name = "blog_users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.Identity)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
