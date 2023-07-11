@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <h1 th:text="${title}">insert title here</h1>
 
-    <form class="mb-3" th:action="@{/posts/create}" th:method="post" th:object="${newPost}">
+    <form class="mb-3" th:action="@{/posts/create}" th:method="post" th:object="${post}">
 
         <input type="hidden" name="postId" th:field="*{id}">
         <div class="mb-3">
@@ -29,8 +29,8 @@
 
     </form>
 
-    <footer th:replace="partials/footer :: footer">
-    </footer>
+<!--    <footer th:replace="partials/footer :: footer">-->
+<!--    </footer>-->
 
 </div>
 

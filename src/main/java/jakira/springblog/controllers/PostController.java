@@ -67,7 +67,6 @@ public class PostController {
 //        post.setTitle(title);
 //        post.setBody(body);
         User loggedInUser = userDao.findById(1L).get();
-//        post.setCreator(loggedInUser);
         post.setCreator(loggedInUser);
 //        emailService.prepareAndSend(post, title, body);
         postDao.save(post);

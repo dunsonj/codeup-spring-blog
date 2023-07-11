@@ -1,6 +1,5 @@
 package jakira.springblog.controllers;
 
-import jakira.springblog.models.EmailService;
 import jakira.springblog.models.User;
 import jakira.springblog.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,13 +18,11 @@ public class UserController {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
-
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
-        return "users/sign-up";
+        return "/users/sign-up";
     }
-
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
