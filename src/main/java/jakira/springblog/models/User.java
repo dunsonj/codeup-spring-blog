@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class User {
         username = copy.username;
         password = copy.password;
     }
+
 
 
 
