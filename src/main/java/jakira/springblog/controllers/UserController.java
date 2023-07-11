@@ -1,5 +1,6 @@
 package jakira.springblog.controllers;
 
+import jakira.springblog.models.EmailService;
 import jakira.springblog.models.User;
 import jakira.springblog.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     private UserRepository userDao;
+    private EmailService emailService;
     private PasswordEncoder passwordEncoder;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
