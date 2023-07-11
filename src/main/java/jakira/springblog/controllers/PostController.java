@@ -6,6 +6,7 @@ import jakira.springblog.models.User;
 import jakira.springblog.repositories.PostRepository;
 import jakira.springblog.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,17 @@ public class PostController {
     private EmailService emailService;
     @GetMapping("")
     public String posts (Model model){
+        User loggedInUser = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+        if(loggedInUser.getId() ==0){
+            System.out.println("You are not logged in");
+        }else{
+            System.out.println("You're logged in as user id "+ loggedInUser.getId()
+                        +" "+loggedInUser.getUsername()
+                        +"  "+loggedInUser.getEmail());
+        }
         List<Post> posts = postDao.findAll();
 
         model.addAttribute("posts", posts);
@@ -45,9 +57,10 @@ public class PostController {
     }
     @GetMapping("/create")
     public String showCreate(Model model){
-        model.addAttribute("newPost", new Post());
+        model.addAttribute("post", new Post());
         return "/posts/create";
     }
+
     @PostMapping("/create")
     public String doCreate( @ModelAttribute Post post) {
 //        Post post = new Post();
