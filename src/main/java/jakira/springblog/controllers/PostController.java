@@ -44,27 +44,28 @@ public class PostController {
         return "/posts/show";
     }
     @GetMapping("/create")
-    public String showCreate(){
-
+    public String showCreate(Model model){
+        model.addAttribute("newPost", new Post());
         return "/posts/create";
     }
     @PostMapping("/create")
-    public String doCreate( @RequestParam String title
-                        , @RequestParam String body) {
-        Post post = new Post();
-
-        post.setTitle(title);
-        post.setBody(body);
-
+    public String doCreate( @ModelAttribute Post post) {
+//        Post post = new Post();
+//        post.setTitle(title);
+//        post.setBody(body);
         User loggedInUser = userDao.findById(1L).get();
+//        post.setCreator(loggedInUser);
         post.setCreator(loggedInUser);
-
-        emailService.prepareAndSend(post, title, body);
-
+//        emailService.prepareAndSend(post, title, body);
         postDao.save(post);
-
         return "redirect:/posts";
+    }
 
+    @GetMapping("/{id}/edit")
+    public String showEdit(@PathVariable Long id, Model model){
+       Post postToEdit = postDao.getReferenceById(id);
+        model.addAttribute("newPost", postToEdit);
+        return "/posts/create";
     }
 }
 
