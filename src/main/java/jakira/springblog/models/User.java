@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
